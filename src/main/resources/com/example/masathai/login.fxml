@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.masathai.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.HelloController">
+    <children>
+        <AnchorPane prefHeight="503.0" prefWidth="382.0" style="-fx-background-color: #0C39FF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <ImageView fitHeight="52.0" fitWidth="52.0" layoutX="166.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <!--                        <Image url="@../images/icons8_Google_Wallet_50px.png" />-->
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" layoutX="105.0" layoutY="262.0" prefHeight="23.0" prefWidth="173.0" text="Citizen Merge" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="18.0" />
+                    </font>
+                </Label>
+                <Label alignment="CENTER" layoutX="89.0" layoutY="295.0" prefHeight="23.0" prefWidth="212.0" text="Effortless citizen management system" textAlignment="CENTER" textFill="WHITE">
+                    <font>
+                        <Font name="Segoe UI" size="12.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+        <Pane layoutX="488.0" layoutY="101.0" prefHeight="329.0" prefWidth="283.0" AnchorPane.bottomAnchor="78.0" AnchorPane.topAnchor="96.0">
+            <children>
+                <TextField fx:id="txtUsername" layoutX="8.0" layoutY="55.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
+                <PasswordField fx:id="txtPassword" layoutX="8.0" layoutY="116.0" prefHeight="34.0" prefWidth="275.0" promptText="password" />
+                <Button fx:id="btnSignin" layoutX="66.0" layoutY="179.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" style="-fx-background-color: green; -fx-border-color: none;" text="Sign in" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="14.0" />
+                    </font></Button>
+                <Button fx:id="btnSignup" layoutX="161.0" layoutY="264.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0" style="-fx-background-color: transparent;" text="Sign Up" textFill="#e80202">
+                    <font>
+                        <Font name="System Bold" size="12.0" />
+                    </font></Button>
+                <Text layoutX="43.0" layoutY="285.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account?" />
+                <Separator layoutY="236.0" prefHeight="7.0" prefWidth="275.0" />
+                <Label alignment="CENTER" layoutX="122.0" layoutY="228.0" prefHeight="23.0" prefWidth="31.0" style="-fx-background-color: #fff;" text="Or" textFill="#5b5a5a">
+                    <font>
+                        <Font name="Segoe UI" size="12.0" />
+                    </font>
+                </Label>
+                <Label fx:id="lblErrors" alignment="CENTER" layoutX="8.0" layoutY="95.0" prefHeight="23.0" prefWidth="275.0" textFill="#ff6354">
+                    <font>
+                        <Font name="Segoe UI" size="10.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="457.0" layoutY="152.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/user.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="32.0" fitWidth="30.0" layoutX="457.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../images/lock.png" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>
