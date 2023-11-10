@@ -1,0 +1,67 @@
+package com.example.masathai.model;
+
+import com.opencsv.CSVReader;
+import com.opencsv.CSVReaderBuilder;
+import com.opencsv.exceptions.CsvValidationException;
+
+
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Question {
+    String questionText;
+
+    String[] options;
+
+    String correctAnswer;
+
+    Question(String question,String[] options, String correctAnswer){
+        this.questionText = question;
+        this.options = options;
+        this.correctAnswer = correctAnswer;
+    }
+
+
+    public String getQuestionText() {
+        return questionText;
+    }
+
+    public String[] getOptions() {
+        return options;
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public boolean isCorrectAnswer(String selectedAnswer) {
+        return selectedAnswer.equals(correctAnswer);
+    }
+
+    public static List<Question> loadQuestionsFromCSV(){
+        List<Question> questions = new ArrayList<>();
+        try {
+            CSVReader csvReader = new CSVReaderBuilder(new FileReader("src/main/resources/data/questions.csv")).withSkipLines(1).build();
+            String[] line;
+            while ((line = csvReader.readNext()) != null) {
+                if (line.length >= 6) {
+                    String questionText = line[0];
+                    String[] options = new String[4];
+                    options[0] = line[1];
+                    options[1] = line[2];
+                    options[2] = line[3];
+                    options[3] = line[4];
+                    String correctAnswer = line[5];
+                    questions.add(new Question(questionText, options, correctAnswer));
+                }
+            }
+        } catch (IOException | CsvValidationException e) {
+            e.printStackTrace();
+        }
+        return questions;
+    }
+
+
+}

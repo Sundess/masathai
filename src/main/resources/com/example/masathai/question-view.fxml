@@ -4,24 +4,25 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="712.0" style="-fx-border-color: none; -fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="500.0" prefWidth="712.0" style="-fx-border-color: none; -fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.controller.QuestionController">
    <children>
       <BorderPane layoutX="1.0" layoutY="1.0" prefHeight="500.0" prefWidth="800.0">
          <left>
             <Pane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: purple;" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="8.0" layoutY="87.0" text="Question" textFill="WHITE">
+                  <Label fx:id="questionNo" layoutX="8.0" layoutY="87.0" text="Question" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label layoutX="6.0" layoutY="172.0" prefHeight="114.0" prefWidth="378.0" text="1. What year did Malaysia gain its independence from British colonial rule?" textFill="WHITE" wrapText="true">
+                  <Label fx:id="questionText" layoutX="11.0" layoutY="140.0" prefHeight="180.0" prefWidth="378.0" text="In Thai cuisine what is the popular noodle dish often served with a tamarind-based broth and garnished with lime peanuts and chili?" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -29,7 +30,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="279.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="100.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </left>
@@ -41,18 +42,33 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <RadioButton layoutX="14.0" layoutY="169.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="Option 1" />
-                  <RadioButton layoutX="14.0" layoutY="201.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="Option 2" />
-                  <RadioButton layoutX="14.0" layoutY="234.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="This is option 3" />
-                  <RadioButton layoutX="14.0" layoutY="266.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="This is option 4" />
-                  <Button layoutX="334.0" layoutY="446.0" mnemonicParsing="false" text="Next" />
-                  <Button layoutX="14.0" layoutY="446.0" mnemonicParsing="false" text="Prev" />
+                  <RadioButton fx:id="opt1" layoutX="14.0" layoutY="169.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="Option 1">
+                     <toggleGroup>
+                        <ToggleGroup fx:id="options" />
+                     </toggleGroup>
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="opt2" layoutX="14.0" layoutY="209.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="Option 2" toggleGroup="$options">
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="opt3" layoutX="14.0" layoutY="250.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="This is option 3" toggleGroup="$options">
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <RadioButton fx:id="opt4" layoutX="14.0" layoutY="290.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="This is option 4" toggleGroup="$options">
+                     <font>
+                        <Font size="16.0" />
+                     </font></RadioButton>
+                  <Button fx:id="prevBtn" layoutX="14.0" layoutY="446.0" mnemonicParsing="false" onAction="#prevClick" text="Prev" />
+                  <Button fx:id="nextBtn" layoutX="334.0" layoutY="446.0" mnemonicParsing="false" onAction="#nextClick" text="Next" />
                   <Label layoutX="252.0" layoutY="14.0" prefHeight="42.0" prefWidth="137.0" text="3:00 second">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="176.0" layoutY="450.0" text="1/10" />
+                  <Label fx:id="currentNo" layoutX="176.0" layoutY="450.0" text="1/10" />
                </children></Pane>
          </right>
       </BorderPane>
