@@ -11,27 +11,16 @@ import java.util.List;
 
 public class QuestionController {
     @FXML
-    private Label questionNo;
+    private Label questionNoDisplay, questionTextDisplay, currentNo;
     @FXML
-    private Label questionText;
+    private RadioButton opt1, opt2, opt3, opt4;
     @FXML
-    private Label currentNo;
-    @FXML
-    private RadioButton opt1;
-    @FXML
-    private RadioButton opt2;
-    @FXML
-    private RadioButton opt3;
-    @FXML
-    private RadioButton opt4;
-    @FXML
-    private Button prevBtn;
-    @FXML
-    private Button nextBtn;
+    private Button prevBtn, nextBtn;
 
     private static List<Question> questions;
-    private List<String> answers = new ArrayList<>(15);
+    private final List<String> answers = new ArrayList<>(15);
     private int questionNoTracker = 0;
+    private int score = 0;
 
     public QuestionController() {
         for (int i = 0; i < 15; i++) {
@@ -50,10 +39,10 @@ public class QuestionController {
     }
 
     private void loadQuestions() {
-        questionNo.setText("Question " + (questionNoTracker + 1) + ".");
+        questionNoDisplay.setText("Question No." + (questionNoTracker + 1) );
         if (questionNoTracker < questions.size()) {
             Question currentQuestion = questions.get(questionNoTracker);
-            questionText.setText(currentQuestion.getQuestionText());
+            questionTextDisplay.setText(currentQuestion.getQuestionText());
 
             String[] options = currentQuestion.getOptions();
             opt1.setText(options[0]);
@@ -63,14 +52,23 @@ public class QuestionController {
         }
 
         prevBtn.setVisible(questionNoTracker != 0);
-        nextBtn.setText(questionNoTracker == 15 ? "Submit" : "Next");
-        currentNo.setText((questionNoTracker + 1) + "/16");
+        nextBtn.setText(questionNoTracker == 14 ? "Submit" : "Next");
+        currentNo.setText((questionNoTracker + 1) + "/15");
     }
+
 
     @FXML
     private void nextClick() {
         String answer = getAnswer();
         answers.set(questionNoTracker, answer);
+
+        if (questionNoTracker == 14){
+            score = getTotalScore();
+            System.out.println("submiited");
+            System.out.println(score);
+            return;
+        }
+
         clearFields();
         if (questionNoTracker != questions.size()) {
             questionNoTracker++;
@@ -134,5 +132,14 @@ public class QuestionController {
                 }
             }
         }
+    }
+
+    private int getTotalScore(){
+        for (int i = 0; i < questions.size(); i++ ){
+            if(answers.get(i) != null && answers.get(i).equals(questions.get(i).getCorrectAnswer())){
+                score ++;
+            }
+        }
+        return score;
     }
 }

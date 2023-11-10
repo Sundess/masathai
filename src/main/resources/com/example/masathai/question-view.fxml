@@ -17,12 +17,12 @@
          <left>
             <Pane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: purple;" BorderPane.alignment="CENTER">
                <children>
-                  <Label fx:id="questionNo" layoutX="8.0" layoutY="87.0" text="Question" textFill="WHITE">
+                  <Label fx:id="questionNoDisplay" layoutX="8.0" layoutY="87.0" text="Question" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <Label fx:id="questionText" layoutX="11.0" layoutY="140.0" prefHeight="180.0" prefWidth="378.0" text="In Thai cuisine what is the popular noodle dish often served with a tamarind-based broth and garnished with lime peanuts and chili?" textFill="WHITE" wrapText="true">
+                  <Label fx:id="questionTextDisplay" layoutX="11.0" layoutY="140.0" prefHeight="180.0" prefWidth="378.0" text="In Thai cuisine what is the popular noodle dish often served with a tamarind-based broth and garnished with lime peanuts and chili?" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font>
