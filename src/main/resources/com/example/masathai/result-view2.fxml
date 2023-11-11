@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.ResultView2">
+   <children>
+      <BorderPane prefHeight="500.0" prefWidth="800.0">
+         <left>
+            <Pane prefHeight="500.0" prefWidth="400.0" style="-fx-background-color: purple;" BorderPane.alignment="CENTER">
+               <children>
+                  <GridPane layoutX="14.0" layoutY="51.0" prefHeight="91.0" prefWidth="130.0" vgap="8.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.20001220703125" minWidth="10.0" prefWidth="100.40001831054687" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.80005493164063" minWidth="10.0" prefWidth="30.79998168945312" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Maximum" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label style="-fx-background-color: Red; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Minimum" textFill="WHITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="Mode" textFill="WHITE" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label prefWidth="40.0" style="-fx-background-color: Green; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <GridPane layoutX="256.0" layoutY="51.0" prefHeight="91.0" prefWidth="130.0" vgap="8.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="115.20001220703125" minWidth="10.0" prefWidth="100.40001831054687" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="52.80005493164063" minWidth="10.0" prefWidth="30.79998168945312" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Mean" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label text="Median" textFill="WHITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label text="SD" textFill="WHITE" GridPane.rowIndex="2">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </GridPane>
+                  <Label layoutX="51.0" layoutY="201.0" style="-fx-font-weight: bold;" text="Get Other Student's marks" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox layoutX="50.0" layoutY="254.0" prefHeight="25.0" prefWidth="300.0" />
+               </children>
+            </Pane>
+         </left>
+         <right>
+            <Pane prefHeight="500.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="44.0" layoutY="34.0" style="-fx-font-weight: bold;" text="Candidate's Name :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="215.0" layoutY="34.0" text="Sandesh Shrestha">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="79.0" layoutY="71.0" style="-fx-font-weight: bold;" text="Age :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="128.0" layoutY="71.0" text="18">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="208.0" layoutY="71.0" style="-fx-font-weight: bold;" text="Gender :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="287.0" layoutY="71.0" text="Male">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Line endX="270.2928466796875" endY="-0.70709228515625" layoutX="115.0" layoutY="148.0" startX="-100.0" />
+                  <Line endX="-100.00003051757812" endY="140.00003051757812" layoutX="114.0" layoutY="148.0" startX="-100.0" />
+                  <Line endX="271.2928466796875" endY="0.707122802734375" layoutX="114.0" layoutY="288.0" startX="-100.0" />
+                  <Line endX="-100.00003051757812" endY="140.00003051757812" layoutX="486.0" layoutY="148.0" startX="-100.0" />
+                  <Label layoutX="26.0" layoutY="168.0" style="-fx-font-weight: bold;" text="Score :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="242.0" style="-fx-font-weight: bold;" text="Status :">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="26.0" layoutY="204.0" style="-fx-font-weight: bold;" text="Total Question: ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="87.0" layoutY="168.0" text="15">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="167.0" layoutY="205.0" text="20">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="99.0" layoutY="242.0" text="Passed">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="105.0" layoutY="305.0" mnemonicParsing="false" text="Go Home">
+                     <graphic>
+                        <ImageView fitHeight="84.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" smooth="false">
+                           <image>
+                              <Image url="@../../../images/home.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </right>
+         <top>
+            <Label alignment="CENTER" prefHeight="64.0" prefWidth="811.0" style="-fx-background-color: skyblue;" text="All Student Marks" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="36.0" />
+               </font>
+            </Label>
+         </top>
+      </BorderPane>
+   </children>
+</AnchorPane>
