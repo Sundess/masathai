@@ -1,2 +1,3 @@
 fName,lName,gender,dob,nationality,username,password,score
-"sandesh","shrestha","Male","2004-04-30","Singapore","sandesh","shrestha"
+"sandesh","shrestha","Male","2004-04-30","Singapore",sandesh123,"shrestha",20
+"sandesh","shrestha","Male","2023-10-31",,sandesh,"0a1b086f072513ebb1d3d715166583135b706781ce4948cb1eb90b9837eb5707",15

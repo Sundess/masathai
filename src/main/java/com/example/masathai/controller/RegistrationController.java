@@ -61,7 +61,8 @@ public class RegistrationController {
             errorText.setText("Error: Passwords do not match");
             return;
         }
-        if(userName.getText() == "sandesh") {
+        if(User.users.containsKey(uname)) {
+            errorText.setText("Error: User Already Exists");
             return;
         }
         System.out.println(
@@ -89,4 +90,8 @@ public class RegistrationController {
         }
     }
 
+    @FXML
+    public void getToLogin() throws IOException {
+        new SceneController(registrationPage, "login.fxml");
+    }
 }

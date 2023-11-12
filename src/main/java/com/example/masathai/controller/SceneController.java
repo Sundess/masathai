@@ -14,3 +14,4 @@ public class SceneController {
         currentAnchorPane.getChildren().setAll(nextAnchorPane);
     }
 }
+

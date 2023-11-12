@@ -50,14 +50,14 @@
                         <Image url="@../../../images/user.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="txtUsername" layoutX="97.0" layoutY="172.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
+                  <TextField fx:id="userName" layoutX="97.0" layoutY="172.0" prefHeight="34.0" prefWidth="275.0" promptText="username or email" />
                   <ImageView fitHeight="36.0" fitWidth="43.0" layoutX="27.0" layoutY="237.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/lock.png" />
                      </image>
                   </ImageView>
-                  <PasswordField fx:id="txtPassword" layoutX="97.0" layoutY="238.0" prefHeight="34.0" prefWidth="275.0" promptText="password" />
-                  <Button fx:id="btnSignin" layoutX="132.0" layoutY="304.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="137.0" style="-fx-background-color: green; -fx-border-color: none;" text="Sign in" textFill="WHITE">
+                  <PasswordField fx:id="password" layoutX="97.0" layoutY="238.0" prefHeight="34.0" prefWidth="275.0" promptText="password" />
+                  <Button layoutX="132.0" layoutY="304.0" mnemonicParsing="false" onAction="#signIn" prefHeight="34.0" prefWidth="137.0" style="-fx-background-color: green; -fx-border-color: none;" text="Sign in" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
@@ -68,7 +68,7 @@
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="btnSignup" layoutX="224.0" layoutY="381.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="71.0" style="-fx-background-color: transparent;" text="Sign Up" textFill="#e80202">
+                  <Button layoutX="224.0" layoutY="381.0" mnemonicParsing="false" onAction="#getToRegistration" prefHeight="34.0" prefWidth="71.0" style="-fx-background-color: transparent;" text="Sign Up" textFill="#e80202">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

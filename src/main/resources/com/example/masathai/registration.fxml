@@ -77,8 +77,8 @@
                      </font>
                   </Button>
                   <Label fx:id="errorText" alignment="CENTER" layoutX="110.0" layoutY="3.0" prefHeight="17.0" prefWidth="380.0" textAlignment="CENTER" textFill="RED" />
-                  <Label fx:id="errorText1" alignment="CENTER" layoutX="197.0" layoutY="462.0" text="Have an account ?" textAlignment="CENTER" />
-                  <Button fx:id="goToLogin" layoutX="300.0" layoutY="453.0" mnemonicParsing="false" onAction="#onSubmit" prefHeight="34.0" prefWidth="134.0" style="-fx-background-color: green;" text="Login" textFill="WHITE">
+                  <Label alignment="CENTER" layoutX="197.0" layoutY="462.0" text="Have an account ?" textAlignment="CENTER" />
+                  <Button layoutX="300.0" layoutY="453.0" mnemonicParsing="false" onAction="#getToLogin" prefHeight="34.0" prefWidth="134.0" style="-fx-background-color: green;" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Arial Black" size="16.0" />
                      </font>
