@@ -15,8 +15,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.ResultView2">
+<AnchorPane fx:id="result2Page" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <BorderPane prefHeight="500.0" prefWidth="800.0">
          <left>
@@ -38,7 +37,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label style="-fx-background-color: Red; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="maxMark" prefWidth="40.0" style="-fx-background-color: Green; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1">
                            <font>
                               <Font name="Rockwell Extra Bold" size="16.0" />
                            </font>
@@ -46,7 +45,15 @@
                               <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
                            </padding>
                         </Label>
-                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="minMark" style="-fx-background-color: Red; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="Rockwell Extra Bold" size="16.0" />
+                           </font>
+                           <padding>
+                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
+                           </padding>
+                        </Label>
+                        <Label fx:id="modeMark" style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Rockwell Extra Bold" size="16.0" />
                            </font>
@@ -64,14 +71,6 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label prefWidth="40.0" style="-fx-background-color: Green; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1">
-                           <font>
-                              <Font name="Rockwell Extra Bold" size="16.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="4.0" left="4.0" right="4.0" top="4.0" />
-                           </padding>
-                        </Label>
                      </children>
                   </GridPane>
                   <GridPane layoutX="256.0" layoutY="51.0" prefHeight="91.0" prefWidth="130.0" vgap="8.0">
@@ -85,7 +84,7 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                        <Label fx:id="sdMark" style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2">
                            <font>
                               <Font name="Rockwell Extra Bold" size="16.0" />
                            </font>
@@ -98,7 +97,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1">
+                        <Label fx:id="meanMark" style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1">
                            <font>
                               <Font name="Rockwell Extra Bold" size="16.0" />
                            </font>
@@ -116,7 +115,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Label fx:id="meedianMark" style="-fx-background-color: skyblue; -fx-background-radius: 4;" text="20" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font name="Rockwell Extra Bold" size="16.0" />
                            </font>
@@ -143,7 +142,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="215.0" layoutY="34.0" text="Sandesh Shrestha">
+                  <Label fx:id="userName" layoutX="215.0" layoutY="34.0" text="Sandesh Shrestha">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -153,7 +152,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="128.0" layoutY="71.0" text="18">
+                  <Label fx:id="userAge" layoutX="128.0" layoutY="71.0" text="18">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -163,7 +162,7 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="287.0" layoutY="71.0" text="Male">
+                  <Label fx:id="userGender" layoutX="287.0" layoutY="71.0" text="Male">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -182,22 +181,22 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="26.0" layoutY="204.0" style="-fx-font-weight: bold;" text="Total Question: ">
+                  <Label layoutX="26.0" layoutY="204.0" style="-fx-font-weight: bold;" text="Percentage:">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="87.0" layoutY="168.0" text="15">
+                  <Label fx:id="userScore" layoutX="87.0" layoutY="168.0" text="15/20">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="167.0" layoutY="205.0" text="20">
+                  <Label fx:id="userPercentage" layoutX="137.0" layoutY="204.0" text="20 %">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="99.0" layoutY="242.0" text="Passed">
+                  <Label fx:id="userStatus" layoutX="99.0" layoutY="242.0" text="Passed">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -218,7 +217,7 @@
             </Pane>
          </right>
          <top>
-            <Label alignment="CENTER" prefHeight="64.0" prefWidth="811.0" style="-fx-background-color: skyblue;" text="All Student Marks" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" prefHeight="64.0" prefWidth="811.0" style="-fx-background-color: skyblue;" text="Students Marks Summery" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

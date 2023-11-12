@@ -12,15 +12,20 @@ import java.util.List;
 
 public class Question {
     String questionText;
-
     String[] options;
-
     String correctAnswer;
+    public static List<String> userAnswers = new ArrayList<>(19);
+    public static int currentUserScore = 0;
+
 
     Question(String question,String[] options, String correctAnswer){
         this.questionText = question;
         this.options = options;
         this.correctAnswer = correctAnswer;
+
+        for (int i = 0; i < 19; i++) {
+            userAnswers.add(null); // Add null as a placeholder for answers
+        }
     }
 
 

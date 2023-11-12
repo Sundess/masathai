@@ -5,8 +5,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.layout.AnchorPane;
 
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.List;
 
 public class QuestionController {
@@ -16,18 +17,13 @@ public class QuestionController {
     private RadioButton opt1, opt2, opt3, opt4;
     @FXML
     private Button prevBtn, nextBtn;
-
-    private static List<Question> questions;
-    private final List<String> answers = new ArrayList<>(15);
+    @FXML
+    private AnchorPane questionAnchorPane;
+    public static List<Question> questions;
     private int questionNoTracker = 0;
-    private int score = 0;
 
-    public QuestionController() {
-        for (int i = 0; i < 15; i++) {
-            answers.add(null); // Add null as a placeholder for answers
-        }
-    }
 
+    // Loads question and presents it to user
     @FXML
     private void initialize() {
         loadQuestionsFromCSV();
@@ -38,6 +34,7 @@ public class QuestionController {
         questions = Question.loadQuestionsFromCSV();
     }
 
+    // Presents question to user (loads into fxml)
     private void loadQuestions() {
         questionNoDisplay.setText("Question No." + (questionNoTracker + 1) );
         if (questionNoTracker < questions.size()) {
@@ -52,20 +49,21 @@ public class QuestionController {
         }
 
         prevBtn.setVisible(questionNoTracker != 0);
-        nextBtn.setText(questionNoTracker == 14 ? "Submit" : "Next");
-        currentNo.setText((questionNoTracker + 1) + "/15");
+        nextBtn.setText(questionNoTracker == 19 ? "Submit" : "Next");
+        currentNo.setText((questionNoTracker + 1) + "/20");
     }
 
 
     @FXML
-    private void nextClick() {
+    private void nextClick() throws IOException {
         String answer = getAnswer();
-        answers.set(questionNoTracker, answer);
+        Question.userAnswers.set(questionNoTracker, answer);
 
-        if (questionNoTracker == 14){
-            score = getTotalScore();
+        if (questionNoTracker == 19){
+            Question.currentUserScore = getTotalScore();
             System.out.println("submiited");
-            System.out.println(score);
+            System.out.println(Question.currentUserScore);
+            goToResult();
             return;
         }
 
@@ -75,12 +73,13 @@ public class QuestionController {
         }
         loadQuestions();
         answerTrackerHelper();
+
     }
 
     @FXML
     private void prevClick() {
         String answer = getAnswer();
-        answers.set(questionNoTracker, answer);
+        Question.userAnswers.set(questionNoTracker, answer);
         if (questionNoTracker != 0) {
             questionNoTracker--;
         }
@@ -88,6 +87,7 @@ public class QuestionController {
         answerTrackerHelper();
     }
 
+    // used to retrieve user answer.
     private String getAnswer() {
         if (opt1.isSelected()) {
             return opt1.getText();
@@ -102,6 +102,7 @@ public class QuestionController {
         }
     }
 
+    // clear options filed
     private void clearFields() {
         opt1.setSelected(false);
         opt2.setSelected(false);
@@ -109,10 +110,11 @@ public class QuestionController {
         opt4.setSelected(false);
     }
 
+    // helps track previous answer for user
     private void answerTrackerHelper() {
         String[] options = questions.get(questionNoTracker).getOptions();
-        if (answers.get(questionNoTracker) != null) {
-            String answer = answers.get(questionNoTracker);
+        if (Question.userAnswers.get(questionNoTracker) != null) {
+            String answer = Question.userAnswers.get(questionNoTracker);
             for (int i = 0; i < options.length; i++) {
                 if (options[i].equals(answer)) {
                     switch (i) {
@@ -134,12 +136,17 @@ public class QuestionController {
         }
     }
 
+    // Get total score
     private int getTotalScore(){
         for (int i = 0; i < questions.size(); i++ ){
-            if(answers.get(i) != null && answers.get(i).equals(questions.get(i).getCorrectAnswer())){
-                score ++;
+            if(Question.userAnswers.get(i) != null && Question.userAnswers.get(i).equals(questions.get(i).getCorrectAnswer())){
+                Question.currentUserScore ++;
             }
         }
-        return score;
+        return Question.currentUserScore;
+    }
+
+    public void goToResult() throws IOException {
+       new SceneController(questionAnchorPane, "result-view.fxml");
     }
 }
