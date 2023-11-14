@@ -125,12 +125,12 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Label layoutX="51.0" layoutY="201.0" style="-fx-font-weight: bold;" text="Get Other Student's marks" textFill="WHITE">
+                  <Label layoutX="51.0" layoutY="171.0" prefHeight="70.0" prefWidth="297.0" style="-fx-font-weight: bold;" text="Get Other Student's Marks Using Username" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <ChoiceBox fx:id="studentDetail" layoutX="50.0" layoutY="254.0" prefHeight="25.0" prefWidth="300.0" />
+                  <ChoiceBox fx:id="studentDetail" layoutX="50.0" layoutY="259.0" prefHeight="25.0" prefWidth="300.0" />
                </children>
             </Pane>
          </left>

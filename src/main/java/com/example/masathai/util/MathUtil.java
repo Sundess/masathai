@@ -7,11 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MathUtil {
-    public static int getPercentage(int score){
-        System.out.println();
+
+    // Calculate the percentage based on the given score and total possible score
+    public static int getPercentage(int score) {
         return score * 100 / 20;
     }
-    
+
+    // Calculate the mean (average) of an integer array
     public static int calculateMean(int[] arr) {
         if (arr.length == 0) {
             return 0;
@@ -20,9 +22,10 @@ public class MathUtil {
         for (int num : arr) {
             sum += num;
         }
-        return (int) sum / arr.length;
-    };
+        return sum / arr.length;
+    }
 
+    // Calculate the median of a sorted integer array
     public static int calculateMedian(int[] arr) {
         if (arr.length == 0) {
             return 0;
@@ -40,10 +43,11 @@ public class MathUtil {
             return (int) ((middleValue1 + middleValue2) / 2.0);
         } else {
             // If odd, return the middle element
-            return (int) arr[middleIndex];
+            return arr[middleIndex];
         }
     }
 
+    // Calculate the mode (number with the highest frequency) of an integer array
     public static int calculateMode(int[] numbers) {
         if (numbers == null || numbers.length == 0) {
             throw new IllegalArgumentException("Array is null or empty");
@@ -73,6 +77,7 @@ public class MathUtil {
         return mode;
     }
 
+    // Calculate the standard deviation of an integer array
     public static int calculateStandardDeviation(int[] arr) {
         if (arr.length == 0) {
             return 0;
@@ -92,7 +97,8 @@ public class MathUtil {
         return (int) Math.sqrt(variance);
     }
 
-    public static int getAge(LocalDate dob){
+    // Get the age based on the given date of birth
+    public static int getAge(LocalDate dob) {
         LocalDate curDate = LocalDate.now();
         return Period.between(dob, curDate).getYears();
     }
