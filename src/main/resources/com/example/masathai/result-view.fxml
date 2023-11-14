@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.controller.ResultViewController">
+<AnchorPane fx:id="resultPage" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.controller.ResultViewController">
    <children>
       <BorderPane prefHeight="500.0" prefWidth="800.0">
          <left>
@@ -62,7 +62,7 @@
                               <Font name="System Bold" size="36.0" />
                            </font>
                         </Label>
-                        <ImageView fitHeight="32.0" fitWidth="27.0" layoutX="357.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="32.0" fitWidth="27.0" layoutX="357.0" layoutY="18.0" onMouseClicked="#getToResultView2" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../images/right_arrow.png" />
                            </image>

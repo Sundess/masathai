@@ -9,9 +9,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane fx:id="questionAnchorPane" prefHeight="500.0" prefWidth="712.0" style="-fx-border-color: none; -fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.masathai.controller.QuestionController">
    <children>
@@ -32,10 +32,7 @@
                         <Insets />
                      </opaqueInsets>
                   </Label>
-                  <ImageView fitHeight="134.0" fitWidth="236.0" layoutX="100.0" layoutY="286.0" pickOnBounds="true">
-                     <image>
-                        <Image url="@../../../images/malasiya.png" />
-                     </image></ImageView>
+                  <ImageView fx:id="qnImage" fitHeight="134.0" fitWidth="236.0" layoutX="100.0" layoutY="286.0" pickOnBounds="true" />
                </children>
             </Pane>
          </left>
@@ -47,73 +44,126 @@
                         <Font name="System Bold" size="28.0" />
                      </font>
                   </Label>
-                  <RadioButton fx:id="opt1" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="Option 1">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="options" />
-                     </toggleGroup>
-                     <font>
-                        <Font size="16.0" />
-                     </font></RadioButton>
-                  <RadioButton fx:id="opt2" layoutX="14.0" layoutY="182.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="Option 2" toggleGroup="$options">
-                     <font>
-                        <Font size="16.0" />
-                     </font></RadioButton>
-                  <RadioButton fx:id="opt3" layoutX="14.0" layoutY="223.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="This is option 3" toggleGroup="$options">
-                     <font>
-                        <Font size="16.0" />
-                     </font></RadioButton>
-                  <RadioButton fx:id="opt4" layoutX="14.0" layoutY="263.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="350.0" text="This is option 4" toggleGroup="$options">
-                     <font>
-                        <Font size="16.0" />
-                     </font></RadioButton>
+                  <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="132.0" prefHeight="43.0" prefWidth="360.0">
+                     <children>
+                        <RadioButton fx:id="opt1" mnemonicParsing="false" prefHeight="18.0">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="options" />
+                           </toggleGroup>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <ImageView fx:id="optionImage1" fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="173.0" prefHeight="43.0" prefWidth="360.0">
+                     <children>
+                        <RadioButton fx:id="opt2" mnemonicParsing="false" prefHeight="18.0" toggleGroup="$options">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <ImageView fx:id="optionImage2" fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="214.0" prefHeight="43.0" prefWidth="360.0">
+                     <children>
+                        <RadioButton fx:id="opt3" mnemonicParsing="false" prefHeight="18.0" toggleGroup="$options">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <ImageView fx:id="optionImage3" fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="254.0" prefHeight="43.0" prefWidth="360.0">
+                     <children>
+                        <RadioButton fx:id="opt4" mnemonicParsing="false" prefHeight="18.0" toggleGroup="$options">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </RadioButton>
+                        <ImageView fx:id="optionImage4" fitHeight="31.0" fitWidth="74.0" pickOnBounds="true" preserveRatio="true">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </ImageView>
+                     </children>
+                  </HBox>
                   <Button fx:id="prevBtn" layoutX="19.0" layoutY="380.0" mnemonicParsing="false" onAction="#prevClick" text="Prev" />
                   <Button fx:id="nextBtn" layoutX="339.0" layoutY="380.0" mnemonicParsing="false" onAction="#nextClick" text="Next" />
                   <Label fx:id="currentNo" layoutX="181.0" layoutY="384.0" text="1/10" />
+                  <ImageView fitHeight="30.0" fitWidth="41.0" layoutX="110.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true" />
                </children></Pane>
          </right>
          <top>
             <Pane prefHeight="58.0" prefWidth="800.0" style="-fx-background-color: skyblue;" BorderPane.alignment="CENTER">
                <children>
-                  <Label layoutX="14.0" layoutY="16.0" style="-fx-font-weight: bold;" text="Candidate's Name :">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="185.0" layoutY="16.0" text="Sandesh Shrestha">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="365.0" layoutY="16.0" style="-fx-font-weight: bold;" text="Country:">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="554.0" layoutY="16.0" style="-fx-font-weight: bold;" text="Gender :">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="633.0" layoutY="16.0" text="Male">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="28.0" fitWidth="18.0" layoutX="712.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/hourglass.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="738.0" layoutY="16.0" text="300 s">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="37.0" fitWidth="77.0" layoutX="444.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/malasiya.png" />
-                     </image>
-                  </ImageView>
+                  <HBox alignment="CENTER" prefHeight="58.0" prefWidth="800.0" spacing="4.0">
+                     <children>
+                        <Label style="-fx-font-weight: bold;" text="Candidate's Name :">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="fullName" text="Sandesh Shrestha">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="16.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label style="-fx-font-weight: bold;" text="Country:">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="4.0" />
+                           </HBox.margin>
+                        </Label>
+                        <ImageView fx:id="country" fitHeight="32.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/flags/malasiya.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets right="16.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label style="-fx-font-weight: bold;" text="Gender :">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="4.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Label fx:id="gender" text="Male">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets right="16.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </Pane>
          </top>

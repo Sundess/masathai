@@ -2,6 +2,7 @@ package com.example.masathai.controller;
 
 import com.example.masathai.model.User;
 import com.example.masathai.util.Hash;
+import com.example.masathai.util.MathUtil;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
@@ -53,28 +54,39 @@ public class RegistrationController {
         String inputPass2 = pass2.getText();
 
         // Field Validation
-        if(firstName.isEmpty() || lastName.isEmpty() || genderUser == null || birthday == null || nationality == null || uname.isEmpty() || inputPass.isEmpty() || inputPass2.isEmpty()) {
+        if(firstName.isEmpty() || lastName.isEmpty() || genderUser == null || birthday == null || userNationality == null || uname.isEmpty() || inputPass.isEmpty() || inputPass2.isEmpty()) {
             errorText.setText("Error: Please enter all the details.");
             return;
         }
+
+        // Age Validation
+        if (MathUtil.getAge(birthday) <= 16){
+            errorText.setText("Your age must be greater than or equal to 16.");
+            return;
+        }
+
+        // Password Validation
         if(!inputPass.equals(inputPass2)) {
             errorText.setText("Error: Passwords do not match");
             return;
         }
+
+        // Check to see if the user already exists
         if(User.users.containsKey(uname)) {
             errorText.setText("Error: User Already Exists");
             return;
         }
+
         System.out.println(
                 firstName + lastName + genderUser + birthday + userNationality + uname + inputPass
         );
 
-        String hasedPass = Hash.getHashedValue(inputPass);
-        User currentUser = new User(firstName, lastName, genderUser, birthday, userNationality, uname, hasedPass);
+        String hashedPass = Hash.getHashedValue(inputPass);
+        User currentUser = new User(firstName, lastName, genderUser, birthday, userNationality, uname, hashedPass);
         errorText.setTextFill(Color.GREEN);
         User.saveDataToCsv(currentUser);
         errorText.setText("Registration Successful.");
-
+        clearFeilds();
     }
 
 
@@ -88,6 +100,20 @@ public class RegistrationController {
         } else {
             return null;
         }
+    }
+
+    private void clearFeilds(){
+        fName.clear();
+        lName.clear();
+        opt1.setSelected(false);
+        opt2.setSelected(false);
+        opt3.setSelected(false);
+        dob.getEditor().clear();
+        nationality.getSelectionModel().clearSelection();
+        userName.clear();
+        pass.clear();
+        pass2.clear();
+
     }
 
     @FXML

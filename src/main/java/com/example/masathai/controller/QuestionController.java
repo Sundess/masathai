@@ -1,20 +1,30 @@
 package com.example.masathai.controller;
 
 import com.example.masathai.model.Question;
+import com.example.masathai.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.util.List;
 
+import static com.example.masathai.model.User.currentUser;
+
+
 public class QuestionController {
     @FXML
-    private Label questionNoDisplay, questionTextDisplay, currentNo;
+    private Label questionNoDisplay, questionTextDisplay, currentNo, fullName, gender;
     @FXML
     private RadioButton opt1, opt2, opt3, opt4;
+    @FXML
+    private ImageView optionImage1,optionImage2,optionImage3,optionImage4, qnImage;
+    @FXML
+    private ImageView country;
     @FXML
     private Button prevBtn, nextBtn;
     @FXML
@@ -26,6 +36,11 @@ public class QuestionController {
     // Loads question and presents it to user
     @FXML
     private void initialize() {
+        fullName.setText(currentUser.getFullName());
+        gender.setText(currentUser.getGender());
+        String flag = User.getFlag(currentUser.getNationality());
+        Image image = new Image(getClass().getResource(flag).toExternalForm());
+        country.setImage(image);
         loadQuestionsFromCSV();
         loadQuestions();
     }
@@ -42,10 +57,42 @@ public class QuestionController {
             questionTextDisplay.setText(currentQuestion.getQuestionText());
 
             String[] options = currentQuestion.getOptions();
-            opt1.setText(options[0]);
-            opt2.setText(options[1]);
-            opt3.setText(options[2]);
-            opt4.setText(options[3]);
+
+            if (currentQuestion.getImageName() != null){
+                String image = currentQuestion.getImageName();
+                if (image.equals("Marina Bay Sands")){
+                    Image image1 = new Image(getClass().getResource("/images/questionImages/marinaBaySands.jpg").toExternalForm());
+                    qnImage.setImage(image1);
+                } else if (image.equals("Wat Pho")) {
+                    Image image1 = new Image(getClass().getResource("/images/questionImages/watPho.jpeg").toExternalForm());
+                    qnImage.setImage(image1);
+                }else if (image.equals("Batu Cave")){
+                    Image image1 = new Image(getClass().getResource("/images/questionImages/batuCave.jpg").toExternalForm());
+                    qnImage.setImage(image1);
+                }
+            }
+
+            if(options[0].equals("Malasiya Flag")){
+                opt1.setText("");
+                Image image = new Image(getClass().getResource("/images/flags/malasiya.png").toExternalForm());
+                optionImage1.setImage(image);
+                opt2.setText("");
+                Image image2 = new Image(getClass().getResource("/images/flags/singapore.jpg").toExternalForm());
+                optionImage2.setImage(image2);
+                opt3.setText("");
+                Image image3 = new Image(getClass().getResource("/images/flags/thailand.jpg").toExternalForm());
+                optionImage3.setImage(image3);
+                opt4.setText("");
+                Image image4 = new Image(getClass().getResource("/images/flags/england.jpg").toExternalForm());
+                optionImage4.setImage(image4);
+
+
+            }else {
+                opt1.setText(options[0]);
+                opt2.setText(options[1]);
+                opt3.setText(options[2]);
+                opt4.setText(options[3]);
+            }
         }
 
         prevBtn.setVisible(questionNoTracker != 0);
@@ -53,6 +100,11 @@ public class QuestionController {
         currentNo.setText((questionNoTracker + 1) + "/20");
     }
 
+    private void updateScore() throws IOException {
+        User.users.get(currentUser.getUsername()).score = Question.currentUserScore;
+
+        User.writeAllUsersToCsv();
+    }
 
     @FXML
     private void nextClick() throws IOException {
@@ -61,8 +113,7 @@ public class QuestionController {
 
         if (questionNoTracker == 19){
             Question.currentUserScore = getTotalScore();
-            System.out.println("submiited");
-            System.out.println(Question.currentUserScore);
+            updateScore();
             goToResult();
             return;
         }
@@ -76,9 +127,11 @@ public class QuestionController {
 
     }
 
+
     @FXML
     private void prevClick() {
         String answer = getAnswer();
+        clearFields();
         Question.userAnswers.set(questionNoTracker, answer);
         if (questionNoTracker != 0) {
             questionNoTracker--;
@@ -89,17 +142,32 @@ public class QuestionController {
 
     // used to retrieve user answer.
     private String getAnswer() {
-        if (opt1.isSelected()) {
-            return opt1.getText();
-        } else if (opt2.isSelected()) {
-            return opt2.getText();
-        } else if (opt3.isSelected()) {
-            return opt3.getText();
-        } else if (opt4.isSelected()) {
-            return opt4.getText();
-        } else {
-            return null;
+        if (questionNoTracker == 2 || questionNoTracker == 11 || questionNoTracker == 16){
+            if (opt1.isSelected()) {
+                return "Malasiya Flag";
+            } else if (opt2.isSelected()) {
+                return "Thailand Flag";
+            } else if (opt3.isSelected()) {
+                return "Singapore Flag";
+            } else if (opt4.isSelected()) {
+                return "England Flag";
+            } else {
+                return null;
+            }
+        }else {
+            if (opt1.isSelected()) {
+                return opt1.getText();
+            } else if (opt2.isSelected()) {
+                return opt2.getText();
+            } else if (opt3.isSelected()) {
+                return opt3.getText();
+            } else if (opt4.isSelected()) {
+                return opt4.getText();
+            } else {
+                return null;
+            }
         }
+
     }
 
     // clear options filed
@@ -108,6 +176,12 @@ public class QuestionController {
         opt2.setSelected(false);
         opt3.setSelected(false);
         opt4.setSelected(false);
+
+        optionImage1.setImage(null);
+        optionImage2.setImage(null);
+        optionImage3.setImage(null);
+        optionImage4.setImage(null);
+
     }
 
     // helps track previous answer for user

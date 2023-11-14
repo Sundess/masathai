@@ -1,3 +1,8 @@
-fName,lName,gender,dob,nationality,username,password,score
-"sandesh","shrestha","Male","2004-04-30","Singapore",sandesh123,"shrestha",20
-"sandesh","shrestha","Male","2023-10-31",,sandesh,"0a1b086f072513ebb1d3d715166583135b706781ce4948cb1eb90b9837eb5707",15
+"First Name","Last Name","Gender","Date of Birth","Nationality","Username","Password","Score"
+"ss","ss","Male","2023-11-02","Thiland","ss","a31fe9656fc8d3a459e623dc8204e6d0268f8df56d734dac3ca3262edb5db883","2"
+"Sandesh","Shrestha","Male","2005-09-26","Malaysia","sandesh_","555dd6bfa3cb151ac22d77b9c518ffa751b1619c15437d765bbbf1a0079ff6d7","0"
+"sandesh","sshrestha","Male","2011-10-31","Singapore","sandesh111","a31fe9656fc8d3a459e623dc8204e6d0268f8df56d734dac3ca3262edb5db883","15"
+"ss","ss","Male","2023-11-03","Singapore","sss","a31fe9656fc8d3a459e623dc8204e6d0268f8df56d734dac3ca3262edb5db883","0"
+"sandesh","shrestha","Male","2004-04-30","Singapore","sandesh123","shrestha","20"
+"sandesh","shrestha","Male","2005-10-31","Singapore","sandesh321","a31fe9656fc8d3a459e623dc8204e6d0268f8df56d734dac3ca3262edb5db883","10"
+"sandesh","shrestha","Male","2023-10-31","Singapore","sandesh","0a1b086f072513ebb1d3d715166583135b706781ce4948cb1eb90b9837eb5707","15"

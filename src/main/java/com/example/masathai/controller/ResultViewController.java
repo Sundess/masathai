@@ -11,6 +11,10 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class ResultViewController {
 
@@ -26,6 +30,8 @@ public class ResultViewController {
     private Label usernameText;
     @FXML
     private TableView<TableData> resultTable;
+    @FXML
+    private AnchorPane resultPage;
     @FXML
     private TableColumn<TableData, Integer> num;
     @FXML
@@ -54,13 +60,10 @@ public class ResultViewController {
 
     private void  addDataToTable(){
         int quesntionNoTacker = 1;
-//        list.add(new TableData(1,"this is question", "",""));
-//        list.add(new TableData(2,"this is question", "",""));
         for (Question question : QuestionController.questions){
             list.add(new TableData(quesntionNoTacker, question.getQuestionText(),question.getCorrectAnswer(),Question.userAnswers.get(quesntionNoTacker - 1)));
             quesntionNoTacker++;
         }
-        System.out.printf(list.toString());
         num.setCellValueFactory(new PropertyValueFactory<TableData,Integer>("qn"));
         ansColumn.setCellValueFactory(new PropertyValueFactory<TableData,String>("userAns"));
         correctAnsColumn.setCellValueFactory(new PropertyValueFactory<TableData,String>("correctAns"));
@@ -96,5 +99,10 @@ public class ResultViewController {
         public String getUserAns() {
             return userAns;
         }
+    }
+
+    @FXML
+    void getToResultView2() throws IOException {
+        new SceneController(resultPage, "result-summary.fxml");
     }
 }
