@@ -13,6 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class User implements Serializable {
+    private static final long serialVersionUID = 1L;
     String fName;
     String lName;
     String gender;
@@ -87,77 +88,28 @@ public class User implements Serializable {
     }
 
         public static void saveDataToCsv(User user){
+            users.put(user.getUsername(), user);
 
-            File file = new File("src/main/resources/data/users.csv");
-            try {
-                FileWriter outputFile = new FileWriter(file,true);
-                CSVWriter writer = new CSVWriter(outputFile);
-
-                // add data to csv
-                String[] data1 = {user.fName, user.lName, user.gender, String.valueOf(user.dob), user.nationality, user.username, user.password};
-                writer.writeNext(data1);
-
-                // closing writer connection
-                writer.close();
-            }
-            catch (IOException e) {
-                System.out.println(e);
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/main/resources/data/users.ser", false))) {
+                oos.writeObject(users);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
         public static void loadDataFromCsv(){
-            try {
-                CSVReader csvReader = new CSVReaderBuilder(new FileReader("src/main/resources/data/users.csv")).withSkipLines(1).build();
-                String[] line;
-                while ((line = csvReader.readNext()) != null) {
-                    if (line.length == 8) {
-                        User user = new User(line[0], line[1], line[2],LocalDate.parse(line[3]),line[4],line[5],line[6],Integer.parseInt(line[7]));
-                        users.put(user.username, user);
-                    }
-                    else {
-                        User user = new User(line[0], line[1], line[2],LocalDate.parse(line[3]),line[4],line[5],line[6],0);
-                        users.put(user.username, user);
-                    }
-                }
-            } catch (IOException | CsvValidationException e) {
+            try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/main/resources/data/users.ser"))) {
+                users = (HashMap<String, User>) ois.readObject();
+            } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
         }
 
         public static void writeAllUsersToCsv() throws IOException {
-            File file = new File("src/main/resources/data/users.csv");
-            File file2 = new File("src/main/resources/data/test_result.csv");
-
-            try (FileWriter outputFile = new FileWriter(file, false);
-                 FileWriter outputFile2 = new FileWriter(file2, false)) {
-
-                CSVWriter writer = new CSVWriter(outputFile);
-                CSVWriter writer2 = new CSVWriter(outputFile2);
-
-
-                // Write header
-                String[] header = {"First Name", "Last Name", "Gender", "Date of Birth", "Nationality", "Username", "Password", "Score"};
-                writer.writeNext(header);
-
-                String[] header2 = {"userName", "userScore"};
-                writer2.writeNext(header2);
-
-
-
-                // Write data
-                for (User user : users.values()) {
-                    String[] userData = {user.fName, user.lName, user.gender, String.valueOf(user.dob), user.nationality, user.username, user.password, String.valueOf(user.score)};
-                    writer.writeNext(userData);
-
-                    String[] userScore = {user.username, String.valueOf(user.score)};
-                    writer2.writeNext(userScore);
-                }
-
-                // Closing writer connection
-                writer.close();
+            try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/main/resources/data/users.ser", false))) {
+                oos.writeObject(users);
             } catch (IOException e) {
-                System.out.println(e);
+                e.printStackTrace();
             }
         }
 
