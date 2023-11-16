@@ -10,6 +10,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class User implements Serializable {
+    @Serial
     private static final long serialVersionUID = 1L;
 
     // Static variables to store users and the current user
@@ -49,8 +50,8 @@ public class User implements Serializable {
         this.score = score;
     }
 
-    // Save user data to a CSV file
-    public static void saveDataToCsv(User user) {
+    // Save user data to in a Serializable file
+    public static void saveData(User user) {
         users.put(user.getUsername(), user);
 
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/main/resources/data/users.ser", false))) {
@@ -60,8 +61,8 @@ public class User implements Serializable {
         }
     }
 
-    // Load user data from a CSV file
-    public static void loadDataFromCsv() {
+    // Load user data from Serializable file
+    public static void loadData() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/main/resources/data/users.ser"))) {
             users = (HashMap<String, User>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
@@ -70,7 +71,7 @@ public class User implements Serializable {
     }
 
     // Write all users to the CSV file
-    public static void writeAllUsersToCsv() throws IOException {
+    public static void writeAllUser() throws IOException {
         // Write user score to test_result.csv file
         File file = new File("src/main/resources/data/test_result.csv");
         try (FileWriter outputFile = new FileWriter(file, false)

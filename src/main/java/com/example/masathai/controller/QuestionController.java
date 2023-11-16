@@ -111,7 +111,7 @@ public class QuestionController {
     // Update user score and write to CSV
     private void updateScore() throws IOException {
         User.users.get(currentUser.getUsername()).score = Question.currentUserScore;
-        User.writeAllUsersToCsv();
+        User.writeAllUser();
     }
 
     // Handle next button click
