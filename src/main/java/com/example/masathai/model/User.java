@@ -2,6 +2,7 @@ package com.example.masathai.model;
 
 import com.example.masathai.util.Hash;
 import com.example.masathai.util.MathUtil;
+import com.opencsv.CSVWriter;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -70,6 +71,31 @@ public class User implements Serializable {
 
     // Write all users to the CSV file
     public static void writeAllUsersToCsv() throws IOException {
+        // Write user score to test_result.csv file
+        File file = new File("src/main/resources/data/test_result.csv");
+        try (FileWriter outputFile = new FileWriter(file, false)
+        ) {
+
+            CSVWriter writer = new CSVWriter(outputFile);
+
+            // Write header for the first file
+            String[] header = {"User Name", "Score"};
+            writer.writeNext(header);
+
+            // Write data to the first file
+            for (User user : users.values()) {
+                String[] userData = {user.username, String.valueOf(user.score)};
+                writer.writeNext(userData);
+            }
+
+            // Closing writer connections
+            writer.close();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+
+
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/main/resources/data/users.ser", false))) {
             oos.writeObject(users);
         } catch (IOException e) {

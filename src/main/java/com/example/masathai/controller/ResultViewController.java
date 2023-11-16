@@ -101,5 +101,21 @@ public class ResultViewController {
             this.correctAns = correctAns;
             this.userAns = userAns;
         }
+
+        public int getQn() {
+            return qn;
+        }
+
+        public String getQuestion() {
+            return question;
+        }
+
+        public String getCorrectAns() {
+            return correctAns;
+        }
+
+        public String getUserAns() {
+            return userAns;
+        }
     }
 }
