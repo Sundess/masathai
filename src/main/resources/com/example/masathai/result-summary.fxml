@@ -125,7 +125,7 @@
                         </Label>
                      </children>
                   </GridPane>
-                  <Label layoutX="51.0" layoutY="171.0" prefHeight="70.0" prefWidth="297.0" style="-fx-font-weight: bold;" text="Get Other Student's Marks Using Username" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                  <Label layoutX="51.0" layoutY="171.0" prefHeight="70.0" prefWidth="297.0" style="-fx-font-weight: bold;" text="Get Other Citzen's Marks Using Username" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -217,7 +217,7 @@
             </Pane>
          </right>
          <top>
-            <Label alignment="CENTER" prefHeight="64.0" prefWidth="811.0" style="-fx-background-color: skyblue;" text="Students Marks Summery" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
+            <Label alignment="CENTER" prefHeight="64.0" prefWidth="811.0" style="-fx-background-color: skyblue;" text="Citizen Marks Summery" textAlignment="CENTER" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
                   <Font name="System Bold" size="36.0" />
                </font>

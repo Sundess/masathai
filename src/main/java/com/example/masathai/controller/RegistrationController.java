@@ -92,7 +92,7 @@ public class RegistrationController {
 
         // Display registration success message
         errorText.setTextFill(Color.GREEN);
-        User.saveDataToCsv(currentUser);
+        User.saveData(currentUser);
         errorText.setText("Registration Successful.");
 
         // Clear input fields

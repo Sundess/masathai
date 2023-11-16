@@ -23,7 +23,7 @@ public class LoginController {
     // Initialize method called when the FXML is loaded
     public void initialize() {
         // Load user data from CSV file
-        User.loadDataFromCsv();
+        User.loadData();
     }
 
     // Method called when the "Sign In" button is pressed
