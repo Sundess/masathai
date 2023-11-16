@@ -10,8 +10,6 @@ import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.Objects;
 
 public class RegistrationController {
     @FXML
@@ -35,15 +33,21 @@ public class RegistrationController {
     @FXML
     private Label errorText;
 
-    public void initialize(){
-        String [] nations = {"Malaysia" , "Singapore", "Thailand"};
+    // Constructor
+    public RegistrationController() {
+
+    }
+
+    // Initialize method called when the FXML is loaded
+    public void initialize() {
+        // Set up nationality options in the ComboBox
+        String[] nations = {"Malaysia", "Singapore", "Thailand"};
         nationality.getItems().addAll(nations);
     }
 
-    public RegistrationController(){
-
-    }
+    // Handle submit button click
     public void onSubmit() throws IOException {
+        // Retrieve user input
         String firstName = fName.getText();
         String lastName = lName.getText();
         String genderUser = getGender();
@@ -54,42 +58,48 @@ public class RegistrationController {
         String inputPass2 = pass2.getText();
 
         // Field Validation
-        if(firstName.isEmpty() || lastName.isEmpty() || genderUser == null || birthday == null || userNationality == null || uname.isEmpty() || inputPass.isEmpty() || inputPass2.isEmpty()) {
+        if (firstName.isEmpty() || lastName.isEmpty() || genderUser == null || birthday == null || userNationality == null || uname.isEmpty() || inputPass.isEmpty() || inputPass2.isEmpty()) {
             errorText.setText("Error: Please enter all the details.");
             return;
         }
 
         // Age Validation
-        if (MathUtil.getAge(birthday) <= 16){
+        if (MathUtil.getAge(birthday) <= 16) {
             errorText.setText("Your age must be greater than or equal to 16.");
             return;
         }
 
         // Password Validation
-        if(!inputPass.equals(inputPass2)) {
+        if (!inputPass.equals(inputPass2)) {
             errorText.setText("Error: Passwords do not match");
             return;
         }
 
-        // Check to see if the user already exists
-        if(User.users.containsKey(uname)) {
+        // Check if the user already exists
+        if (User.users.containsKey(uname)) {
             errorText.setText("Error: User Already Exists");
             return;
         }
 
+        // Display user details (for testing purposes)
         System.out.println(
                 firstName + lastName + genderUser + birthday + userNationality + uname + inputPass
         );
 
+        // Hash the password and create a new User
         String hashedPass = Hash.getHashedValue(inputPass);
         User currentUser = new User(firstName, lastName, genderUser, birthday, userNationality, uname, hashedPass);
+
+        // Display registration success message
         errorText.setTextFill(Color.GREEN);
         User.saveDataToCsv(currentUser);
         errorText.setText("Registration Successful.");
-        clearFeilds();
+
+        // Clear input fields
+        clearFields();
     }
 
-
+    // Retrieve user-selected gender
     private String getGender() {
         if (opt1.isSelected()) {
             return opt1.getText();
@@ -102,7 +112,8 @@ public class RegistrationController {
         }
     }
 
-    private void clearFeilds(){
+    // Clear input fields
+    private void clearFields() {
         fName.clear();
         lName.clear();
         opt1.setSelected(false);
@@ -113,9 +124,9 @@ public class RegistrationController {
         userName.clear();
         pass.clear();
         pass2.clear();
-
     }
 
+    // Navigate to login page.
     @FXML
     public void getToLogin() throws IOException {
         new SceneController(registrationPage, "login.fxml");
